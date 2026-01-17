@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Annotation Bookmarklet</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #e0e0e0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #e94560;
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      color: #a0a0a0;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      color: #e94560;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .bookmarklet-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .bookmarklet {
+      display: inline-block;
+      background: linear-gradient(135deg, #e94560, #c73659);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: grab;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+    }
+
+    .bookmarklet:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+    }
+
+    .bookmarklet:active {
+      cursor: grabbing;
+    }
+
+    .drag-hint {
+      color: #a0a0a0;
+      font-size: 0.95rem;
+    }
+
+    .instructions {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .instructions li {
+      position: relative;
+      padding-left: 45px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .instructions li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background: #e94560;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .tool-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #e94560;
+    }
+
+    .tool-item strong {
+      color: #e94560;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .tool-item span {
+      color: #a0a0a0;
+      font-size: 0.9rem;
+    }
+
+    .export-example {
+      background: #0d1117;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      white-space: pre;
+      color: #7ee787;
+      margin-top: 15px;
+    }
+
+    .keyboard-shortcuts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .shortcut {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    kbd {
+      background: #2d333b;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: inherit;
+      border: 1px solid #444;
+      font-size: 0.9rem;
+    }
+
+    .local-server-note {
+      background: rgba(233, 69, 96, 0.1);
+      border: 1px solid rgba(233, 69, 96, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .local-server-note code {
+      background: #2d333b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AI Annotation Bookmarklet</h1>
+    <p class="subtitle">Visually annotate any webpage to communicate UI changes to AI assistants</p>
+
+    <div class="card">
+      <h2>Install the Bookmarklet</h2>
+      <div class="bookmarklet-container">
+        <a class="bookmarklet" id="bookmarklet-link" href="#">Annotate Page</a>
+        <span class="drag-hint">Drag this button to your bookmarks bar</span>
+      </div>
+      <div class="local-server-note">
+        <strong>Self-contained:</strong> This bookmarklet includes all the code inline - no server required!
+        Works on any website, anytime.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>How to Use</h2>
+      <ol class="instructions">
+        <li>Drag the bookmarklet button above to your browser's bookmarks bar</li>
+        <li>Navigate to any webpage you want to annotate</li>
+        <li>Click the bookmarklet - a toolbar will appear in the top-right corner</li>
+        <li>Select a drawing tool and click-drag on the page to create annotations</li>
+        <li>A note popup appears automatically - add your note or click Cancel to skip</li>
+        <li>Use "Copy Text" to get a structured description to paste into AI chats</li>
+        <li>You can also take a screenshot (Win+Shift+S or Cmd+Shift+4) and paste it directly into the AI - Claude and ChatGPT can see your annotations visually and understand the context</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Available Tools</h2>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <strong>Draggable Toolbar</strong>
+          <span>Grab the ⋮⋮ handle to move toolbar anywhere</span>
+        </div>
+        <div class="tool-item">
+          <strong>Rectangle Tool</strong>
+          <span>Click and drag to draw rectangles of any size</span>
+        </div>
+        <div class="tool-item">
+          <strong>Freehand Tool</strong>
+          <span>Draw freely to highlight irregular areas</span>
+        </div>
+        <div class="tool-item">
+          <strong>Color Presets</strong>
+          <span>5 quick colors (white default) + custom picker</span>
+        </div>
+        <div class="tool-item">
+          <strong>Auto Notes</strong>
+          <span>Note popup appears after each shape</span>
+        </div>
+        <div class="tool-item">
+          <strong>Notes Toggle</strong>
+          <span>Show/hide all notes anchored to their shapes</span>
+        </div>
+        <div class="tool-item">
+          <strong>Edit/Delete</strong>
+          <span>Click any shape to edit note or delete it</span>
+        </div>
+        <div class="tool-item">
+          <strong>Undo / Clear</strong>
+          <span>Remove last annotation or clear all</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Export</h2>
+      <p>Share your annotations with AI:</p>
+
+      <h3 style="margin-top: 20px; color: #e94560; font-size: 1.1rem;">Copy Text</h3>
+      <p style="margin-top: 10px; color: #a0a0a0;">Copies a structured text description perfect for pasting into AI chats:</p>
+      <div class="export-example">=== UI Annotations ===
+Page: https://example.com/dashboard
+Viewport: 1920 x 1080
+Full page: 1920 x 3200
+
+[1] RECT from:(100, 50) to:(400, 120)
+    "Move this header 20px to the left"
+
+[2] RECT from:(200, 1850) to:(600, 1950) [58% down page]
+    "Add a border around this section"
+
+[3] FREEHAND area:(500, 2800) to (700, 3000) [88% down page]
+    "This entire section should have a darker background"</div>
+    </div>
+
+    <div class="card">
+      <h2>Keyboard Shortcuts</h2>
+      <div class="keyboard-shortcuts">
+        <div class="shortcut">
+          <kbd>Esc</kbd>
+          <span>Close annotator</span>
+        </div>
+        <div class="shortcut">
+          <kbd>Esc</kbd>
+          <span>Close note popup</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      AI Annotation Bookmarklet - Communicate UI changes effectively
+    </footer>
+  </div>
+
+  <script>
+    // Inline bookmarklet - contains all the code, no server needed
+    const inlineBookmarklet = `javascript:(function(){if(window.__annotatorActive){alert('Annotator already running!');return;}window.__annotatorActive=true;const shapes=[];let currentTool='rect',currentColor='%23ffffff',isDrawing=false,startX,startY,freehandPoints=[],selectedShapeIndex=null,notesVisible=true;const presetColors=['%23ffffff','%23ff0000','%2300ff00','%23ffff00','%2300bfff'];const canvas=document.createElement('canvas');canvas.id='annotator-canvas';canvas.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999998;cursor:crosshair;pointer-events:auto;';canvas.width=window.innerWidth;canvas.height=window.innerHeight;document.body.appendChild(canvas);const ctx=canvas.getContext('2d');const toolbar=document.createElement('div');toolbar.id='annotator-toolbar';toolbar.style.cssText='position:fixed;top:10px;right:10px;z-index:999999;background:%231a1a2e;border-radius:8px;padding:10px;display:flex;gap:8px;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);font-family:-apple-system,BlinkMacSystemFont,sans-serif;flex-wrap:wrap;max-width:95vw;user-select:none;';const dragHandle=document.createElement('div');dragHandle.style.cssText='cursor:grab;padding:4px 6px;margin-right:4px;color:%23666;font-size:16px;display:flex;align-items:center;';dragHandle.innerHTML='⋮⋮';dragHandle.title='Drag to move toolbar';toolbar.appendChild(dragHandle);let isDraggingToolbar=false,dragOffsetX=0,dragOffsetY=0;dragHandle.onmousedown=(e)=>{isDraggingToolbar=true;dragHandle.style.cursor='grabbing';const rect=toolbar.getBoundingClientRect();dragOffsetX=e.clientX-rect.left;dragOffsetY=e.clientY-rect.top;toolbar.style.right='auto';e.preventDefault();};document.addEventListener('mousemove',(e)=>{if(!isDraggingToolbar)return;let newX=e.clientX-dragOffsetX;let newY=e.clientY-dragOffsetY;newX=Math.max(0,Math.min(newX,window.innerWidth-toolbar.offsetWidth));newY=Math.max(0,Math.min(newY,window.innerHeight-toolbar.offsetHeight));toolbar.style.left=newX+'px';toolbar.style.top=newY+'px';});document.addEventListener('mouseup',()=>{if(isDraggingToolbar){isDraggingToolbar=false;dragHandle.style.cursor='grab';}});const btnStyle='padding:8px 12px;border:none;border-radius:4px;cursor:pointer;font-size:14px;background:%2316213e;color:%23e0e0e0;';const activeStyle='background:%23e94560;color:white;';const tools=[{id:'rect',label:'▢ Rect'},{id:'freehand',label:'✎ Draw'}];const toolButtons={};tools.forEach(t=>{const b=document.createElement('button');b.innerHTML=t.label;b.style.cssText=btnStyle+(t.id===currentTool?activeStyle:'');b.onclick=()=>{currentTool=t.id;Object.keys(toolButtons).forEach(id=>{toolButtons[id].style.cssText=btnStyle+(id===t.id?activeStyle:'');});};toolButtons[t.id]=b;toolbar.appendChild(b);});const sep1=document.createElement('div');sep1.style.cssText='width:1px;height:24px;background:%23333;';toolbar.appendChild(sep1);const colorBoxes=[];presetColors.forEach((c,i)=>{const box=document.createElement('div');box.style.cssText='width:28px;height:28px;background:'+c+';border-radius:4px;cursor:pointer;border:2px solid '+(i===0?'%23e94560':'%23333')+';';box.onclick=()=>{currentColor=c;colorBoxes.forEach((b,j)=>{b.style.borderColor=j===i?'%23e94560':'%23333';});};colorBoxes.push(box);toolbar.appendChild(box);});const sep2=document.createElement('div');sep2.style.cssText='width:1px;height:24px;background:%23333;';toolbar.appendChild(sep2);const undoBtn=document.createElement('button');undoBtn.innerHTML='↶ Undo';undoBtn.style.cssText=btnStyle;undoBtn.onclick=()=>{if(shapes.length>0){shapes.pop();redraw();}};toolbar.appendChild(undoBtn);const clearBtn=document.createElement('button');clearBtn.innerHTML='✖ Clear';clearBtn.style.cssText=btnStyle;clearBtn.onclick=()=>{shapes.length=0;redraw();};toolbar.appendChild(clearBtn);const sep3=document.createElement('div');sep3.style.cssText='width:1px;height:24px;background:%23333;';toolbar.appendChild(sep3);const toggleNotesBtn=document.createElement('button');toggleNotesBtn.innerHTML='👁 Notes';toggleNotesBtn.title='Show/hide all notes';toggleNotesBtn.style.cssText=btnStyle+activeStyle;toggleNotesBtn.onclick=()=>{notesVisible=!notesVisible;toggleNotesBtn.innerHTML=notesVisible?'👁 Notes':'🙈 Notes';toggleNotesBtn.style.cssText=btnStyle+(notesVisible?activeStyle:'');redraw();};toolbar.appendChild(toggleNotesBtn);const sep4=document.createElement('div');sep4.style.cssText='width:1px;height:24px;background:%23333;';toolbar.appendChild(sep4);const copyBtn=document.createElement('button');copyBtn.innerHTML='📋 Copy';copyBtn.style.cssText=btnStyle+'background:%230f3460;';copyBtn.onclick=copyText;toolbar.appendChild(copyBtn);const closeBtn=document.createElement('button');closeBtn.innerHTML='✕ Close';closeBtn.style.cssText=btnStyle+'background:%23e94560;';closeBtn.onclick=cleanup;toolbar.appendChild(closeBtn);document.body.appendChild(toolbar);const notePopup=document.createElement('div');notePopup.id='annotator-note-popup';notePopup.style.cssText='position:fixed;display:none;z-index:1000000;background:%231a1a2e;border-radius:8px;padding:12px;box-shadow:0 4px 20px rgba(0,0,0,0.4);font-family:-apple-system,sans-serif;';notePopup.innerHTML='<div style="color:%23e0e0e0;margin-bottom:8px;font-size:13px;">Note for <span id="ann-num"></span>:</div><textarea id="ann-input" style="width:250px;height:60px;border:1px solid %23333;border-radius:4px;padding:8px;font-size:13px;resize:none;background:%2316213e;color:%23e0e0e0;" placeholder="Enter note..."></textarea><div style="margin-top:8px;display:flex;gap:8px;justify-content:space-between;"><button id="ann-del" style="'+btnStyle+'background:%238b0000;color:white;">Delete</button><div style="display:flex;gap:8px;"><button id="ann-cancel" style="'+btnStyle+'">Cancel</button><button id="ann-save" style="'+btnStyle+'background:%23e94560;color:white;">Save</button></div></div>';document.body.appendChild(notePopup);const noteInput=document.getElementById('ann-input');const noteNum=document.getElementById('ann-num');document.getElementById('ann-del').onclick=()=>{if(selectedShapeIndex!==null&&shapes[selectedShapeIndex]){shapes.splice(selectedShapeIndex,1);redraw();}notePopup.style.display='none';selectedShapeIndex=null;};document.getElementById('ann-cancel').onclick=()=>{notePopup.style.display='none';selectedShapeIndex=null;};document.getElementById('ann-save').onclick=()=>{if(selectedShapeIndex!==null&&shapes[selectedShapeIndex]){shapes[selectedShapeIndex].note=noteInput.value;redraw();}notePopup.style.display='none';selectedShapeIndex=null;};function showNotePopup(i,x,y){selectedShapeIndex=i;noteInput.value=shapes[i].note||'';noteNum.textContent='%23'+(i+1);let px=x+10,py=y+10;if(px+280>window.innerWidth)px=window.innerWidth-290;if(py+150>window.innerHeight)py=window.innerHeight-160;notePopup.style.left=px+'px';notePopup.style.top=py+'px';notePopup.style.display='block';noteInput.focus();}function redraw(){ctx.clearRect(0,0,canvas.width,canvas.height);shapes.forEach((s,i)=>drawShape(s,i));}function drawShape(shape,index){const scrollX=window.scrollX,scrollY=window.scrollY;ctx.strokeStyle=shape.color;ctx.lineWidth=3;ctx.fillStyle=shape.color+'20';if(shape.type==='rect'){const vx=shape.pageX-scrollX,vy=shape.pageY-scrollY;if(vx+shape.width<0||vx>canvas.width||vy+shape.height<0||vy>canvas.height)return;ctx.beginPath();ctx.rect(vx,vy,shape.width,shape.height);ctx.fill();ctx.stroke();const bx=vx,by=vy;ctx.fillStyle=shape.color;ctx.beginPath();ctx.arc(bx,by,12,0,Math.PI*2);ctx.fill();const light=isLight(shape.color);ctx.fillStyle=light?'%23000':'%23fff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(index+1,bx,by);if(shape.note){ctx.fillText('*',bx+14,by-8);if(notesVisible){drawNoteBox(shape,bx,by);}}}else if(shape.type==='freehand'&&shape.points.length>1){ctx.beginPath();ctx.moveTo(shape.points[0].x-scrollX,shape.points[0].y-scrollY);for(let i=1;i<shape.points.length;i++){ctx.lineTo(shape.points[i].x-scrollX,shape.points[i].y-scrollY);}ctx.stroke();const bx=shape.points[0].x-scrollX,by=shape.points[0].y-scrollY;ctx.fillStyle=shape.color;ctx.beginPath();ctx.arc(bx,by,12,0,Math.PI*2);ctx.fill();const light=isLight(shape.color);ctx.fillStyle=light?'%23000':'%23fff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(index+1,bx,by);if(shape.note){ctx.fillText('*',bx+14,by-8);if(notesVisible){drawNoteBox(shape,bx,by);}}}}function drawNoteBox(shape,bx,by){const noteX=bx+25,noteY=by,padding=8,maxWidth=200;ctx.font='12px -apple-system,sans-serif';const words=shape.note.split(' ');const lines=[];let currentLine='';for(const word of words){const testLine=currentLine?currentLine+' '+word:word;if(ctx.measureText(testLine).width>maxWidth-padding*2){if(currentLine)lines.push(currentLine);currentLine=word;}else{currentLine=testLine;}}if(currentLine)lines.push(currentLine);const lineHeight=16;const boxWidth=Math.min(maxWidth,Math.max(...lines.map(l=>ctx.measureText(l).width))+padding*2);const boxHeight=lines.length*lineHeight+padding*2;ctx.fillStyle='rgba(26,26,46,0.95)';ctx.beginPath();ctx.roundRect(noteX,noteY,boxWidth,boxHeight,4);ctx.fill();ctx.strokeStyle=shape.color;ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='%23e0e0e0';ctx.textAlign='left';ctx.textBaseline='top';lines.forEach((line,i)=>{ctx.fillText(line,noteX+padding,noteY+padding+i*lineHeight);});}function isLight(hex){const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return(0.299*r+0.587*g+0.114*b)/255>0.5;}function isPointInShape(vx,vy,shape){const px=vx+window.scrollX,py=vy+window.scrollY;if(shape.type==='rect'){return px>=shape.pageX-5&&px<=shape.pageX+shape.width+5&&py>=shape.pageY-5&&py<=shape.pageY+shape.height+5;}else if(shape.type==='freehand'){for(const pt of shape.points){if(Math.sqrt((px-pt.x)**2+(py-pt.y)**2)<=10)return true;}}return false;}canvas.onmousedown=(e)=>{const x=e.clientX,y=e.clientY;for(let i=shapes.length-1;i>=0;i--){if(isPointInShape(x,y,shapes[i])){showNotePopup(i,x,y);return;}}isDrawing=true;startX=x;startY=y;freehandPoints=[{x,y}];};canvas.onmousemove=(e)=>{if(!isDrawing)return;const x=e.clientX,y=e.clientY;redraw();ctx.strokeStyle=currentColor;ctx.lineWidth=3;ctx.fillStyle=currentColor+'20';if(currentTool==='rect'){ctx.beginPath();ctx.rect(startX,startY,x-startX,y-startY);ctx.fill();ctx.stroke();}else if(currentTool==='freehand'){freehandPoints.push({x,y});ctx.beginPath();ctx.moveTo(freehandPoints[0].x,freehandPoints[0].y);for(let i=1;i<freehandPoints.length;i++){ctx.lineTo(freehandPoints[i].x,freehandPoints[i].y);}ctx.stroke();}};canvas.onmouseup=(e)=>{if(!isDrawing)return;isDrawing=false;const x=e.clientX,y=e.clientY;let newIdx=-1;const scrollX=window.scrollX,scrollY=window.scrollY;if(currentTool==='rect'){const w=x-startX,h=y-startY;if(Math.abs(w)>5&&Math.abs(h)>5){shapes.push({type:'rect',pageX:(w>0?startX:x)+scrollX,pageY:(h>0?startY:y)+scrollY,width:Math.abs(w),height:Math.abs(h),color:currentColor,note:''});newIdx=shapes.length-1;}}else if(currentTool==='freehand'&&freehandPoints.length>2){shapes.push({type:'freehand',points:freehandPoints.map(p=>({x:p.x+scrollX,y:p.y+scrollY})),color:currentColor,note:''});newIdx=shapes.length-1;}redraw();if(newIdx>=0){const s=shapes[newIdx];const px=s.type==='rect'?s.pageX:s.points[0].x;const py=s.type==='rect'?s.pageY:s.points[0].y;showNotePopup(newIdx,px-window.scrollX+20,py-window.scrollY+20);}};function copyText(){const pH=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);const pW=Math.max(document.body.scrollWidth,document.documentElement.scrollWidth);let t='=== UI Annotations ===\\nPage: '+location.href+'\\nViewport: '+window.innerWidth+' x '+window.innerHeight+'\\nFull page: '+pW+' x '+pH+'\\n\\n';if(shapes.length===0){t+='No annotations yet.\\n';}else{shapes.forEach((s,i)=>{t+='['+(i+1)+'] ';if(s.type==='rect'){const x1=Math.round(s.pageX),y1=Math.round(s.pageY),x2=Math.round(s.pageX+s.width),y2=Math.round(s.pageY+s.height);t+='RECT from:('+x1+', '+y1+') to:('+x2+', '+y2+')';if(y1>window.innerHeight)t+=' ['+Math.round(y1/pH*100)+'%25 down page]';t+='\\n';}else{let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;for(const p of s.points){minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y);}t+='FREEHAND area:('+Math.round(minX)+', '+Math.round(minY)+') to ('+Math.round(maxX)+', '+Math.round(maxY)+')';if(minY>window.innerHeight)t+=' ['+Math.round(minY/pH*100)+'%25 down page]';t+='\\n';}if(s.note)t+='    "'+s.note+'"\\n';t+='\\n';});}navigator.clipboard.writeText(t).then(()=>showToast('Copied!')).catch(()=>showToast('Copy failed'));}function showToast(msg){const t=document.createElement('div');t.style.cssText='position:fixed;bottom:20px;left:50%25;transform:translateX(-50%25);background:%231a1a2e;color:%23e0e0e0;padding:12px 24px;border-radius:8px;z-index:1000001;font-family:sans-serif;';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2000);}function cleanup(){canvas.remove();toolbar.remove();notePopup.remove();window.__annotatorActive=false;}window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;redraw();});window.addEventListener('scroll',()=>redraw());document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){if(notePopup.style.display!=='none'){notePopup.style.display='none';selectedShapeIndex=null;}else{cleanup();}}});showToast('Annotator ready!');})();`;
+
+    document.getElementById('bookmarklet-link').href = inlineBookmarklet;
+
+    // Prevent click from navigating
+    document.getElementById('bookmarklet-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Drag this button to your bookmarks bar to install it!');
+    });
+  </script>
+</body>
+</html>

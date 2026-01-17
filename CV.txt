@@ -1,0 +1,68 @@
+Ben Aspill
+ 
+An experienced Delivery Manager proficient in both Agile and Waterfall methodologies, ensuring adaptability and efficiency to implement technology and business change execution. Strong track record of establishing and leading effective Delivery Management & PMO functions within diverse and complex change and transformation environments, across various industries. Excellent stakeholder management, enabling effective collaboration with individuals from all levels and backgrounds to achieve delivery objectives.
+
+Key Skills
+ 
+	Stakeholder Management
+	Team Collaboration
+	Developing & Implementing Operating Models
+	Business Change & Transformation
+	PMO & Portfolio Management
+	Contract Management
+	Organisation Change and Transformation
+	Risk Management
+	Agile Delivery 
+	Developing Policies and Procedures
+	Scoping, Planning and overall Delivery Management
+	Developing creative solutions 
+ 
+Experience
+Axiologik - Delivery Manager - Oct 2023 - Present
+Home Office - CID Decommissioning Change Co-ordinator – Oct 2023 - Jan 2025, Out of Country Transformation Delivery Manager March 2025 – November 2025
+	Managing cross-functional teams to support the successful decommissioning of a legacy system and ensure service continuity
+	Managed the end-to-end delivery of technical services, leading cross-functional teams from initial design and integration through to successful implementation
+	Directed and mentored architects in producing critical architecture designs, while managing challenging stakeholders to ensure project alignment and successful outcomes
+	Generation of reports and board papers on risks and project status and project proposals 
+	Led on technical implementation of the ATLAS chatbot 
+	Complete process overhaul for the team's use of Jira and Confluence, implementing new roadmaps, backlogs, and documentation standards that improved team communication and efficiency.
+	Developed the ‘Jira Insights Navigator’ a tool to empower users to create insights on Jira data - delivering immediate value for the Home Office and creating valuable IP that can be used with future clients. 
+University College London – PMO Manager – Jan 2022 – Sep 2023 
+	Set up new portfolio view of programmes for the change and improvement department including central view  reporting structure and processes and decision-making procedures 
+	Successfully delivered recruitment exercise to resource new department 
+	Developed delivery model between ISD and change and improvement department 
+	Created delivery documentation for department including RAIDD logs, project scoping 
+	documents and lessons learned logs 
+	Ran workshops to engage senior management and cross functional teams in portfolio and delivery model development 
+	Delivered training on delivery methodologies and processes including Agile delivery and Jira training
+
+Invasion - Project Management Consultant (Interim) - Apr 2020 - Dec 2022
+	Established a comprehensive project management toolkit for Invasion which enabled them to meet core contractual and governance requirements
+	Conducted comprehensive review of project activities to ensure that Invasion was fulfilling contractual obligations and KPIs, including the creation of a reporting structure to ensure continued adherence 
+	Developed governance policies and procedures, including CSR Policy, complaints procedures and process and business continuity plans 
+	Wrote comprehensive risk management process and implemented RAIDD log as well as compiled risks and robust mitigation plans 
+	Facilitated daily stand-ups to oversee work at hand and workshop sessions to develop stage plan, milestones and deliverables 
+	The outputs meant that Invasion successfully achieved key KPIs and was eligible for contractual payments and a comprehensive project management methodology was established
+National Citizen Service Trust - Programme Manager - Apr 2018 – Mar 2020 
+Managed a large-scale organisational change programme in the largest youth organisation in the UK and the largest public procurement in Europe (~1billion over 5 years). NCS is an education programme designed to increase social mobility, social cohesion and social engagement in 15-17 year olds through the delivery of national events. 
+	Managed a programme of projects, which included developing a learning and development strategy, a Target Operating Model, sales and marketing plans, contractual requirements, recruitment processes, procurement and supplier onboarding processes and IT functionality
+	Managed Agile delivery teams within IT to ensure delivery of key outputs 
+	Effectively collaborated with senior leadership to define project objectives, requirements and project scope 
+	Managed cross functional stakeholders to ensure that programme of projects was implemented effectively 
+	Managed project management documentation including reporting, budget, RAIDD 
+	Set up project risk management, decision making and escalation process and tools for internal and use by 
+	external partners adhering to the government’s Orange Book governance framework. 
+	Worked with legal and procurement teams to ensure that contracts were robust and fit for purpose 
+	Achieved an ‘excellent’ rating by the Infrastructure Planning Authority for project management tools
+	Governance, providing confidence to government funding partner 
+Previous Experience
+	ANTAC/Kwattu – Operations Manager – 2017 – 2018
+	RCGP – Programme Manager – 2017 
+	British Council – Project Manager – 2014 – 2016
+Qualifications
+	Professional Scrum Master (PSM) Level I & Level II
+	AWS Certified AI Practitioner
+	APMG Change Management Foundation and Practitioner
+	Prince2 Agile Project Management
+	Team Topologies Distilled, Independent Value Streams, Effective Enabling Teams 
+	BA (Hons) Chinese Language and Business Management
