@@ -397,27 +397,72 @@
 
             <!-- Explorations -->
             <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
-                <i class="fas fa-flask text-purple-500 mr-3"></i> Explorations
+                <i class="fas fa-flask text-purple-500 mr-3"></i> Current Explorations
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-
-                <!-- Ongoing Explorations Card -->
-                <div class="col-span-1 md:col-span-2 lg:col-span-4 bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-6 text-white">
-                    <h4 class="font-bold text-lg mb-3"><i class="fas fa-seedling text-green-400 mr-2"></i> Currently Exploring</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-robot mr-2 text-blue-400"></i> Local AI & Ollama</span>
-                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-terminal mr-2 text-green-400"></i> Claude Code Mastery</span>
-                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-brain mr-2 text-purple-400"></i> Memory Palace (3D)</span>
-                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-cogs mr-2 text-amber-400"></i> Engineering Concepts</span>
-                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-book mr-2 text-teal-400"></i> Claude Code Guide (Docs)</span>
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-6 text-white mb-12">
+                <p class="text-slate-300 text-sm mb-4">Areas I'm actively researching and developing:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-white">Local AI Agents</h5>
+                            <p class="text-slate-400 text-xs">Building autonomous agents with Ollama and local LLMs</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-terminal text-green-400"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-white">Claude Code Mastery</h5>
+                            <p class="text-slate-400 text-xs">Maximising productivity with AI-assisted development</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-cogs text-amber-400"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-white">Engineering Best Practices</h5>
+                            <p class="text-slate-400 text-xs">Patterns and principles for AI-augmented development</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-book text-teal-400"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-white">Claude Code Power Guide</h5>
+                            <p class="text-slate-400 text-xs">Comprehensive documentation for mastering Claude Code</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Mini cards for other explorations -->
-                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+            <!-- Previously Created Projects -->
+            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                <i class="fas fa-archive text-slate-500 mr-3"></i> Previously Created Projects
+            </h3>
+            <p class="text-slate-500 text-sm mb-6">Built using <strong>AI Engineering</strong> - leveraging AI as a development partner to rapidly prototype and ship working solutions.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                <!-- Memory Palace -->
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-purple-300 transition-colors">
                     <div class="flex items-center mb-2">
                         <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-bullseye text-purple-600 text-sm"></i>
+                            <i class="fas fa-brain text-purple-600 text-sm"></i>
+                        </div>
+                        <h5 class="font-bold text-slate-900">Memory Palace</h5>
+                    </div>
+                    <p class="text-slate-500 text-xs">3D environment to walk through and assign memories using the Roman Room technique</p>
+                </div>
+
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-bullseye text-indigo-600 text-sm"></i>
                         </div>
                         <h5 class="font-bold text-slate-900">FocusFlow</h5>
                     </div>
