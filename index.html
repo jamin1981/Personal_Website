@@ -291,18 +291,93 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">Innovation Lab</h2>
                 <div class="w-20 h-1.5 bg-purple-600 mt-6 rounded-full"></div>
                 <p class="mt-6 text-slate-600 max-w-2xl">
-                    A collection of tools and explorations built to solve real problems. Each project started with friction I observed - in my work, in teams, or in daily life - and became something that removes that friction.
+                    Tools and explorations built to solve real problems. Each project started with friction I observed - in my work, in teams, or in daily life - and became something that removes that friction.
                 </p>
             </div>
 
-            <!-- Apps Grid with Problem → Solution framing -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Featured Projects -->
+            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                <i class="fas fa-star text-amber-500 mr-3"></i> Featured Projects
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
 
-                <!-- App 1: BrowserWhisper -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white group hover:shadow-xl transition-shadow">
+                <!-- Featured 1: Jira Insights Navigator -->
+                <a href="https://jirainsights.axiologik.com/" target="_blank" class="flex flex-col rounded-xl overflow-hidden border-2 border-blue-200 shadow-lg bg-white group hover:shadow-2xl hover:border-blue-400 transition-all">
+                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-blue-600 to-indigo-600">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fab fa-jira text-white text-4xl opacity-80"></i>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full font-bold">LIVE</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h4 class="text-slate-900 font-bold text-lg mb-2 group-hover:text-blue-600 transition-colors">Jira Insights Navigator <i class="fas fa-external-link-alt text-sm ml-2 opacity-50"></i></h4>
+                        <p class="text-red-600 text-xs font-semibold mb-1">PROBLEM</p>
+                        <p class="text-slate-500 text-sm mb-2">Jira JQL is powerful but hard to use - teams struggle to extract insights from their data.</p>
+                        <p class="text-green-600 text-xs font-semibold mb-1">SOLUTION</p>
+                        <p class="text-slate-600 text-sm mb-3 flex-1">Natural language interface that empowers users to query Jira data without learning JQL syntax.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded font-medium">Work Tool</span>
+                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">Shipped to Gov</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Featured 2: Sparks -->
+                <div class="flex flex-col rounded-xl overflow-hidden border-2 border-pink-200 shadow-lg bg-white group hover:shadow-2xl hover:border-pink-400 transition-all">
+                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-pink-500 to-rose-400">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-bolt text-white text-4xl opacity-80"></i>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-amber-500 text-white text-xs rounded-full font-bold">BETA</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h4 class="text-slate-900 font-bold text-lg mb-2">Sparks</h4>
+                        <p class="text-red-600 text-xs font-semibold mb-1">PROBLEM</p>
+                        <p class="text-slate-500 text-sm mb-2">People use AI as a crutch - it does the thinking for them, degrading their skills.</p>
+                        <p class="text-green-600 text-xs font-semibold mb-1">SOLUTION</p>
+                        <p class="text-slate-600 text-sm mb-3 flex-1">Structured prompts that make AI a sparring partner - every interaction builds your capability.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-pink-100 text-pink-700 text-xs rounded font-medium">Skill Building</span>
+                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">AI Amplifier</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured 3: Web UI Annotator -->
+                <div class="flex flex-col rounded-xl overflow-hidden border-2 border-violet-200 shadow-lg bg-white group hover:shadow-2xl hover:border-violet-400 transition-all">
+                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-violet-600 to-purple-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-draw-polygon text-white text-4xl opacity-80"></i>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-slate-700 text-white text-xs rounded-full font-bold">CODE</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h4 class="text-slate-900 font-bold text-lg mb-2">Web UI Annotator</h4>
+                        <p class="text-red-600 text-xs font-semibold mb-1">PROBLEM</p>
+                        <p class="text-slate-500 text-sm mb-2">Communicating UI feedback requires screenshots, markup tools, and back-and-forth.</p>
+                        <p class="text-green-600 text-xs font-semibold mb-1">SOLUTION</p>
+                        <p class="text-slate-600 text-sm mb-3 flex-1">Bookmarklet that lets you draw annotations directly on any webpage and export structured feedback.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-violet-100 text-violet-700 text-xs rounded font-medium">Dev Tool</span>
+                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">Used on this site</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured 4: BrowserWhisper -->
+                <div class="flex flex-col rounded-xl overflow-hidden border-2 border-cyan-200 shadow-lg bg-white group hover:shadow-2xl hover:border-cyan-400 transition-all">
                     <div class="h-32 overflow-hidden relative bg-gradient-to-br from-blue-500 to-cyan-400">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fas fa-microphone-alt text-white text-4xl opacity-80"></i>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-1 bg-slate-700 text-white text-xs rounded-full font-bold">CODE</span>
                         </div>
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -318,164 +393,95 @@
                     </div>
                 </div>
 
-                <!-- App 2: FocusFlow -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900 group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-purple-600 to-indigo-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-bullseye text-white text-4xl opacity-80"></i>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-white font-bold text-lg mb-2">FocusFlow</h4>
-                        <p class="text-red-400 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-400 text-sm mb-2">Productivity tools are scattered - tasks here, notes there, plans elsewhere.</p>
-                        <p class="text-green-400 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-300 text-sm mb-3 flex-1">Unified workspace combining tasks, notes, and visual planning with focus modes.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-purple-900 text-purple-300 text-xs rounded font-medium">Productivity</span>
-                            <span class="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded">Unified</span>
-                        </div>
+            </div>
+
+            <!-- Explorations -->
+            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                <i class="fas fa-flask text-purple-500 mr-3"></i> Explorations
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+
+                <!-- Ongoing Explorations Card -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-4 bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-6 text-white">
+                    <h4 class="font-bold text-lg mb-3"><i class="fas fa-seedling text-green-400 mr-2"></i> Currently Exploring</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-robot mr-2 text-blue-400"></i> Local AI & Ollama</span>
+                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-terminal mr-2 text-green-400"></i> Claude Code Mastery</span>
+                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-brain mr-2 text-purple-400"></i> Memory Palace (3D)</span>
+                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-cogs mr-2 text-amber-400"></i> Engineering Concepts</span>
+                        <span class="px-3 py-2 bg-slate-700 rounded-lg text-sm"><i class="fas fa-book mr-2 text-teal-400"></i> Claude Code Guide (Docs)</span>
                     </div>
                 </div>
 
-                <!-- App 3: ConsultInsight AI -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-emerald-500 to-teal-400">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-chart-line text-white text-4xl opacity-80"></i>
+                <!-- Mini cards for other explorations -->
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-bullseye text-purple-600 text-sm"></i>
                         </div>
+                        <h5 class="font-bold text-slate-900">FocusFlow</h5>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-slate-900 font-bold text-lg mb-2">ConsultInsight AI</h4>
-                        <p class="text-red-600 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-500 text-sm mb-2">Competitive analysis is time-consuming and often shallow.</p>
-                        <p class="text-green-600 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-600 text-sm mb-3 flex-1">AI-powered competitive intelligence with automated SWOT generation and market gap identification.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded font-medium">Intelligence</span>
-                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">Automated</span>
-                        </div>
-                    </div>
+                    <p class="text-slate-500 text-xs">Unified workspace for tasks, notes, and planning</p>
                 </div>
 
-                <!-- App 4: MarkMelt -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900 group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-orange-500 to-amber-400">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-file-alt text-white text-4xl opacity-80"></i>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-chart-line text-emerald-600 text-sm"></i>
                         </div>
+                        <h5 class="font-bold text-slate-900">ConsultInsight</h5>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-white font-bold text-lg mb-2">MarkMelt</h4>
-                        <p class="text-red-400 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-400 text-sm mb-2">Converting hundreds of Markdown files to plain text is tedious and slow.</p>
-                        <p class="text-green-400 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-300 text-sm mb-3 flex-1">Drag-and-drop bulk conversion, instant client-side processing, merge into single document.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-orange-900 text-orange-300 text-xs rounded font-medium">Bulk</span>
-                            <span class="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded">Instant</span>
-                        </div>
-                    </div>
+                    <p class="text-slate-500 text-xs">AI competitive intelligence and SWOT generation</p>
                 </div>
 
-                <!-- App 5: Deepsearch -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-violet-600 to-purple-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-search text-white text-4xl opacity-80"></i>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-file-alt text-orange-600 text-sm"></i>
                         </div>
+                        <h5 class="font-bold text-slate-900">MarkMelt</h5>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-slate-900 font-bold text-lg mb-2">Deepsearch</h4>
-                        <p class="text-red-600 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-500 text-sm mb-2">Research requires hours of manual searching, reading, and synthesising.</p>
-                        <p class="text-green-600 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-600 text-sm mb-3 flex-1">Autonomous AI agent that plans searches, gathers information, and synthesises comprehensive reports.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-violet-100 text-violet-700 text-xs rounded font-medium">AI Agent</span>
-                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">Autonomous</span>
-                        </div>
-                    </div>
+                    <p class="text-slate-500 text-xs">Bulk Markdown to text conversion</p>
                 </div>
 
-                <!-- App 6: Iron Council -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900 group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-red-600 to-rose-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-fist-raised text-white text-4xl opacity-80"></i>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-violet-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-search text-violet-600 text-sm"></i>
                         </div>
+                        <h5 class="font-bold text-slate-900">Deepsearch</h5>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-white font-bold text-lg mb-2">Iron Council</h4>
-                        <p class="text-red-400 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-400 text-sm mb-2">Generic motivational content doesn't cut through when you need real accountability.</p>
-                        <p class="text-green-400 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-300 text-sm mb-3 flex-1">AI tough-love mentor inspired by Goggins, Rocky, Conan - delivers challenges and raw inspiration.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-red-900 text-red-300 text-xs rounded font-medium">Motivation</span>
-                            <span class="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded">Accountability</span>
-                        </div>
-                    </div>
+                    <p class="text-slate-500 text-xs">Autonomous AI research agent</p>
                 </div>
 
-                <!-- App 7: AncientWhisper -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-amber-600 to-yellow-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-scroll text-white text-4xl opacity-80"></i>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-fist-raised text-red-600 text-sm"></i>
                         </div>
+                        <h5 class="font-bold text-slate-900">Iron Council</h5>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-slate-900 font-bold text-lg mb-2">AncientWhisper</h4>
-                        <p class="text-red-600 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-500 text-sm mb-2">Ancient texts are dense and hard to extract meaning from quickly.</p>
-                        <p class="text-green-600 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-600 text-sm mb-3 flex-1">Conversational interface to explore and query ancient texts using AI document analysis.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded font-medium">AI Chat</span>
-                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">Knowledge</span>
-                        </div>
-                    </div>
+                    <p class="text-slate-500 text-xs">AI tough-love motivational mentor</p>
                 </div>
 
-                <!-- App 8: OrganicScout -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-900 group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-green-600 to-lime-500">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-leaf text-white text-4xl opacity-80"></i>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-scroll text-amber-600 text-sm"></i>
                         </div>
+                        <h5 class="font-bold text-slate-900">AncientWhisper</h5>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-white font-bold text-lg mb-2">OrganicScout</h4>
-                        <p class="text-red-400 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-400 text-sm mb-2">Finding affordable organic meat means checking dozens of websites manually.</p>
-                        <p class="text-green-400 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-300 text-sm mb-3 flex-1">AI-powered price comparison across UK organic meat and fish sellers - finds the best £/kg.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 text-xs rounded font-medium">Price Compare</span>
-                            <span class="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded">UK Focus</span>
-                        </div>
-                    </div>
+                    <p class="text-slate-500 text-xs">Chat with ancient texts using AI</p>
                 </div>
 
-                <!-- App 9: Sparks -->
-                <div class="flex flex-col rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white group hover:shadow-xl transition-shadow">
-                    <div class="h-32 overflow-hidden relative bg-gradient-to-br from-pink-500 to-rose-400">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-bolt text-white text-4xl opacity-80"></i>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                    <div class="flex items-center mb-2">
+                        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-leaf text-green-600 text-sm"></i>
                         </div>
+                        <h5 class="font-bold text-slate-900">OrganicScout</h5>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col">
-                        <h4 class="text-slate-900 font-bold text-lg mb-2">Sparks</h4>
-                        <p class="text-red-600 text-xs font-semibold mb-1">PROBLEM</p>
-                        <p class="text-slate-500 text-sm mb-2">People use AI as a crutch - it does the thinking for them, degrading their skills.</p>
-                        <p class="text-green-600 text-xs font-semibold mb-1">SOLUTION</p>
-                        <p class="text-slate-600 text-sm mb-3 flex-1">Structured prompts that make AI a sparring partner - every interaction builds your capability.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-pink-100 text-pink-700 text-xs rounded font-medium">Skill Building</span>
-                            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">AI Amplifier</span>
-                        </div>
-                    </div>
+                    <p class="text-slate-500 text-xs">UK organic meat price comparison</p>
                 </div>
 
             </div>
